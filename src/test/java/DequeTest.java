@@ -1,25 +1,22 @@
 import org.junit.Test;
 import week2.assignment.Deque;
 
-import java.util.Iterator;
 import java.util.NoSuchElementException;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class DequeTest {
 
-    private Deque addFirstNItems(Deque<Integer> deque, int n) {
+    private void addFirstNItems(Deque<Integer> deque, int n) {
         for (int i = 1; i <= n; i++) {
             deque.addFirst(i);
         }
-        return deque;
     }
 
-    private Deque addLastNItems(Deque<Integer> deque, int n) {
+    private void addLastNItems(Deque<Integer> deque, int n) {
         for (int i = 1; i <= n; i++) {
             deque.addLast(i);
         }
-        return deque;
     }
 
     @Test
@@ -68,8 +65,6 @@ public class DequeTest {
         deque.iterator().remove();
     }
 
-
-
     @Test
     public void test_first_elements_addition_and_removal() {
         Deque<Integer> deque = new Deque<>();
@@ -83,7 +78,6 @@ public class DequeTest {
         assertEquals(new Integer(1), deque.removeFirst());
         assertTrue(deque.isEmpty());
     }
-
 
     @Test
     public void test_last_elements_addition_last_removal() {
