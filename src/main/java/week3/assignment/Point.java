@@ -1,3 +1,4 @@
+package week3.assignment;
 /*****************************************************************************
  Compilation:  javac Point.java
  Execution:    java Point
@@ -7,7 +8,6 @@
  For use on Coursera, Algorithms Part I programming assignment.
 
  */
-package week3.assignment;
 
 import java.util.Comparator;
 import edu.princeton.cs.algs4.StdDraw;

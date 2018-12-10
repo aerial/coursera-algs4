@@ -11,9 +11,23 @@ public class FastCollinearPoints {
     public FastCollinearPoints(Point[] points) {
         validatePoints(points);
         segmentList = new ArrayList<>();
-        Point[] pointsCopy = Arrays.copyOf(points, points.length);
+        Point[] pointsCopy = points.clone();
+        Arrays.sort(pointsCopy);
+        for (int i = 0; i < pointsCopy.length - 3; i++) {
+            Arrays.sort(pointsCopy);
+            Arrays.sort(pointsCopy, pointsCopy[i].slopeOrder());
+            for (int j = 0, first = 1, last = 2; last < pointsCopy.length; last++) {
+                while (last < pointsCopy.length
+                        && Double.compare(pointsCopy[j].slopeTo(pointsCopy[first]),
+                        pointsCopy[j].slopeTo(pointsCopy[last])) == 0) { last++; }
+                if (last - first >= 3 && pointsCopy[j].compareTo(pointsCopy[first]) < 0) {
+                    segmentList.add(new LineSegment(pointsCopy[j], pointsCopy[last - 1]));
+                }
+                first = last;
+            }
+        }
     }
-
+    
     public int numberOfSegments() {
         return segmentList.size();
     }
